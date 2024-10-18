@@ -40,3 +40,12 @@ class CombinedBCEDiceLoss(nn.Module):
         dice_loss = self.dice_loss(inputs, targets)
         cc_loss = self.centroid_loss(inputs, targets)
         return self.bce_weight * bce_loss + self.dice_weight * dice_loss + cc_loss
+
+def dice_loss(preds, targets, smooth=1e-6):
+    preds= torch.sigmoid(preds)
+    threshold = 0.5
+    bin_preds = (preds > threshold)
+    intersection = (bin_preds * targets).sum()
+    union = bin_preds.sum() + targets.sum()
+    dice = (2.0 * intersection + smooth) / (union + smooth)
+    return dice
