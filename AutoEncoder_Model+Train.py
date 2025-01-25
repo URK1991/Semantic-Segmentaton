@@ -1,3 +1,4 @@
+#An experimentation of using an autoencoder for the semantic segmentation task
 import torch
 import torch as th
 import torch.nn as nn
