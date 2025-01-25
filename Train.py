@@ -3,7 +3,8 @@ import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from datasets import custom_dataset, get_transforms
-from model import U_Net
+from 2Dmodel import U_Net
+from 3Dmodel import *
 from losses import CombinedBCEDiceLoss, dice_loss
 
 def train_model():
